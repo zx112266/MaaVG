@@ -1,0 +1,122 @@
+{
+    "启动妮姬": {
+        "recognition": "DirectHit",
+        "action": "StartApp",
+        "package": "com.tencent.nikke",
+        "post_delay": 1000,
+        "timeout": 35000,
+        "next": [
+            "公告弹窗",
+            "等待点击开始"
+        ],
+        "on_error": [
+            "停滞重启_1"
+        ]
+    },
+    "公告弹窗": {
+        "recognition": "OCR",
+        "roi": [90, 295, 540, 110],
+        "expected": ["活动公告", "系统公告"],
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1500,
+        "timeout": 8000,
+        "next": [
+            "等待点击开始"
+        ]
+    },
+    "等待点击开始": {
+        "recognition": "OCR",
+        "roi": [250, 1240, 240, 130],
+        "expected": "点击开始",
+        "action": "Click",
+        "post_delay": 1000,
+        "timeout": 60000,
+        "next": [
+            "活动公告弹窗_关闭",
+            "大厅_底栏确认",
+            "大厅_作战出击确认"
+        ]
+    },
+    "活动公告弹窗_关闭": {
+        "recognition": "OCR",
+        "roi": [40, 300, 640, 100],
+        "expected": ["活动公告", "系统公告"],
+        "action": "Click",
+        "target": [655, 276],
+        "post_delay": 1500,
+        "timeout": 8000,
+        "next": [
+            "大厅_底栏确认"
+        ]
+    },
+    "大厅_底栏确认": {
+        "recognition": "OCR",
+        "roi": [430, 1480, 250, 70],
+        "expected": ["物品栏", "队员招募"],
+        "action": "DoNothing",
+        "timeout": 10000,
+        "next": []
+    },
+    "大厅_作战出击确认": {
+        "recognition": "OCR",
+        "roi": [430, 1190, 290, 140],
+        "expected": "作战出击",
+        "action": "DoNothing",
+        "timeout": 10000,
+        "next": []
+    },
+    "停滞重启_1": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.tencent.nikke",
+        "post_delay": 3000,
+        "max_hit": 1,
+        "next": [
+            "停滞_重新拉起_1"
+        ]
+    },
+    "停滞_重新拉起_1": {
+        "recognition": "DirectHit",
+        "action": "StartApp",
+        "package": "com.tencent.nikke",
+        "post_delay": 1000,
+        "timeout": 35000,
+        "next": [
+            "公告弹窗",
+            "等待点击开始"
+        ],
+        "on_error": [
+            "停滞重启_2"
+        ]
+    },
+    "停滞重启_2": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.tencent.nikke",
+        "post_delay": 3000,
+        "max_hit": 1,
+        "next": [
+            "停滞_重新拉起_2"
+        ]
+    },
+    "停滞_重新拉起_2": {
+        "recognition": "DirectHit",
+        "action": "StartApp",
+        "package": "com.tencent.nikke",
+        "post_delay": 1000,
+        "timeout": 35000,
+        "next": [
+            "公告弹窗",
+            "等待点击开始"
+        ],
+        "on_error": [
+            "停滞放弃"
+        ]
+    },
+    "停滞放弃": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}

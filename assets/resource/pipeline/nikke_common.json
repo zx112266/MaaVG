@@ -1,0 +1,70 @@
+{
+    "回到大厅_确认": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 15000,
+        "next": [
+            "活动公告弹窗_关闭_通用",
+            "大厅_确认"
+        ],
+        "on_error": [
+            "大厅_未确认"
+        ]
+    },
+    "活动公告弹窗_关闭_通用": {
+        "recognition": "OCR",
+        "roi": [40, 300, 640, 100],
+        "expected": ["活动公告", "系统公告"],
+        "action": "Click",
+        "target": [655, 276],
+        "post_delay": 1200,
+        "timeout": 3000,
+        "next": [
+            "大厅_确认"
+        ]
+    },
+    "大厅_确认": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": [
+            "大厅_判据_作战出击"
+        ],
+        "on_error": [
+            "大厅_未确认"
+        ]
+    },
+    "大厅_判据_作战出击": {
+        "recognition": "OCR",
+        "roi": [500, 1230, 200, 90],
+        "expected": "作战出击",
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "大厅_判据_方舟"
+        ]
+    },
+    "大厅_判据_方舟": {
+        "recognition": "OCR",
+        "roi": [520, 1090, 170, 110],
+        "expected": "方舟",
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "大厅_判据_前哨基地"
+        ]
+    },
+    "大厅_判据_前哨基地": {
+        "recognition": "OCR",
+        "roi": [100, 1230, 180, 90],
+        "expected": "前哨基地",
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": []
+    },
+    "大厅_未确认": {
+        "recognition": "DirectHit",
+        "action": "StopTask",
+        "next": []
+    }
+}

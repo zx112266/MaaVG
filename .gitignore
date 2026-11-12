@@ -452,3 +452,6 @@ tools/ImageCropper/**/*.png
 
 config
 debug
+# local scratch
+tmp/
+_tmp_*.py
