@@ -82,14 +82,6 @@
         "target": [78, 1480],
         "timeout": 8000,
         "post_delay": 2200,
-        "next": ["大厅_确认"]
-    },
-    "大厅_确认": {
-        "recognition": "OCR",
-        "expected": "作战出击",
-        "roi": [430, 1190, 290, 140],
-        "action": "DoNothing",
-        "timeout": 8000,
-        "next": []
+        "next": ["跳过弹窗_回到大厅_确认"]
     }
 }
