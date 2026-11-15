@@ -1,0 +1,293 @@
+{
+    "派遣_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "派遣_关公告弹窗",
+            "派遣_判据_作战出击"
+        ],
+        "timeout": 8000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_关公告弹窗": {
+        "recognition": "OCR",
+        "expected": [
+            "活动公告",
+            "系统公告"
+        ],
+        "roi": [
+            90,
+            295,
+            540,
+            110
+        ],
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1200,
+        "next": [
+            "派遣_判据_作战出击"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_判据_作战出击"
+        ]
+    },
+    "派遣_判据_作战出击": {
+        "recognition": "OCR",
+        "expected": "作战出击",
+        "roi": [
+            430,
+            1190,
+            290,
+            140
+        ],
+        "action": "DoNothing",
+        "next": [
+            "派遣_判据_方舟"
+        ],
+        "timeout": 8000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_判据_方舟": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "DoNothing",
+        "next": [
+            "派遣_点击公告栏"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_点击公告栏": {
+        "recognition": "OCR",
+        "expected": "公告栏",
+        "roi": [
+            252,
+            1274,
+            96,
+            82
+        ],
+        "action": "Click",
+        "target": [
+            302,
+            1324
+        ],
+        "post_delay": 1800,
+        "next": [
+            "派遣_检测领取",
+            "派遣_检测派遣",
+            "派遣_关闭面板"
+        ],
+        "timeout": 8000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_检测领取": {
+        "recognition": "OCR",
+        "expected": "领取奖励",
+        "roi": [
+            430,
+            540,
+            300,
+            660
+        ],
+        "action": "DoNothing",
+        "next": [
+            "派遣_全部领取"
+        ],
+        "timeout": 4000,
+        "on_error": [
+            "派遣_检测派遣",
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_全部领取": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "roi": [
+            420,
+            1170,
+            280,
+            80
+        ],
+        "action": "Click",
+        "target": [
+            581,
+            1226
+        ],
+        "post_delay": 1500,
+        "next": [
+            "派遣_领奖浮层",
+            "派遣_关闭面板"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_领奖浮层": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            180,
+            880,
+            360,
+            220
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "派遣_领奖浮层2",
+            "派遣_检测派遣",
+            "派遣_关闭面板"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_领奖浮层2": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            180,
+            880,
+            360,
+            220
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "派遣_检测派遣",
+            "派遣_关闭面板"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            "派遣_检测派遣",
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_检测派遣": {
+        "recognition": "OCR",
+        "expected": "派遣时间",
+        "roi": [
+            80,
+            640,
+            280,
+            520
+        ],
+        "action": "DoNothing",
+        "next": [
+            "派遣_全部派遣"
+        ],
+        "timeout": 4000,
+        "on_error": [
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_全部派遣": {
+        "recognition": "OCR",
+        "expected": "全部派遣",
+        "roi": [
+            240,
+            1170,
+            220,
+            80
+        ],
+        "action": "Click",
+        "target": [
+            376,
+            1224
+        ],
+        "post_delay": 1500,
+        "next": [
+            "派遣_确认派遣",
+            "派遣_关闭面板"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_确认派遣": {
+        "recognition": "OCR",
+        "expected": "执行全部派遣",
+        "roi": [
+            40,
+            360,
+            480,
+            90
+        ],
+        "action": "Click",
+        "target": [
+            479,
+            1228
+        ],
+        "post_delay": 2000,
+        "next": [
+            "派遣_关闭面板"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_关闭面板"
+        ]
+    },
+    "派遣_关闭面板": {
+        "recognition": "OCR",
+        "expected": "派遣公告栏",
+        "roi": [
+            60,
+            300,
+            320,
+            70
+        ],
+        "action": "Click",
+        "target": [
+            650,
+            324
+        ],
+        "post_delay": 1500,
+        "next": [
+            "派遣_确认回到大厅"
+        ],
+        "timeout": 6000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_确认回到大厅": {
+        "recognition": "OCR",
+        "expected": "作战出击",
+        "roi": [
+            430,
+            1190,
+            290,
+            140
+        ],
+        "action": "DoNothing",
+        "next": [],
+        "timeout": 10000,
+        "on_error": [
+            "派遣_结束"
+        ]
+    },
+    "派遣_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [],
+        "timeout": 3000
+    }
+}

@@ -1,0 +1,159 @@
+{
+    "前哨_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 15000,
+        "next": ["前哨_关公告弹窗", "前哨_判据_作战出击"]
+    },
+    "前哨_关公告弹窗": {
+        "recognition": "OCR",
+        "expected": ["活动公告", "系统公告"],
+        "roi": [40, 300, 640, 100],
+        "action": "Click",
+        "target": [655, 276],
+        "post_delay": 1200,
+        "timeout": 3000,
+        "next": ["前哨_判据_作战出击"]
+    },
+    "前哨_判据_作战出击": {
+        "recognition": "OCR",
+        "expected": "作战出击",
+        "roi": [500, 1230, 200, 90],
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["前哨_判据_方舟"]
+    },
+    "前哨_判据_方舟": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [520, 1090, 170, 110],
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": ["前哨_点击前哨防御"]
+    },
+    "前哨_点击前哨防御": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [146, 1348],
+        "post_delay": 3000,
+        "next": ["前哨_检测一举歼灭", "前哨_检测获得奖励", "前哨_关闭面板"]
+    },
+    "前哨_检测一举歼灭": {
+        "recognition": "ColorMatch",
+        "roi": [323, 1176, 54, 52],
+        "method": 4,
+        "lower": [[190, 40, 40]],
+        "upper": [[255, 130, 130]],
+        "count": 40,
+        "connected": false,
+        "action": "Click",
+        "target": [252, 1235],
+        "post_delay": 1500,
+        "timeout": 5000,
+        "next": ["前哨_进行歼灭"]
+    },
+    "前哨_进行歼灭": {
+        "recognition": "OCR",
+        "expected": "进行歼灭",
+        "roi": [380, 1080, 180, 70],
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["前哨_领取奖励_歼灭"]
+    },
+    "前哨_领取奖励_歼灭": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [200, 880, 320, 260],
+        "action": "Click",
+        "target_offset": [0, 14],
+        "post_delay": 2000,
+        "timeout": 10000,
+        "next": ["前哨_领取奖励_歼灭_重试", "前哨_检测获得奖励", "前哨_关闭面板"],
+        "on_error": ["前哨_检测获得奖励", "前哨_关闭面板"]
+    },
+    "前哨_领取奖励_歼灭_重试": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [200, 880, 320, 260],
+        "action": "Click",
+        "target_offset": [0, 14],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["前哨_检测获得奖励", "前哨_关闭面板"],
+        "on_error": ["前哨_检测获得奖励", "前哨_关闭面板"]
+    },
+    "前哨_检测获得奖励": {
+        "recognition": "ColorMatch",
+        "roi": [610, 1176, 54, 52],
+        "method": 4,
+        "lower": [[190, 40, 40]],
+        "upper": [[255, 130, 130]],
+        "count": 40,
+        "connected": false,
+        "action": "Click",
+        "target": [521, 1236],
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": ["前哨_领取奖励_获得"]
+    },
+    "前哨_领取奖励_获得": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [200, 880, 320, 400],
+        "action": "Click",
+        "target_offset": [0, 14],
+        "post_delay": 2000,
+        "timeout": 10000,
+        "next": ["前哨_领取奖励_获得_重试", "前哨_关闭面板"],
+        "on_error": ["前哨_关闭面板"]
+    },
+    "前哨_领取奖励_获得_重试": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [200, 880, 320, 400],
+        "action": "Click",
+        "target_offset": [0, 14],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["前哨_关闭面板"],
+        "on_error": ["前哨_关闭面板"]
+    },
+    "前哨_关闭面板": {
+        "recognition": "OCR",
+        "expected": "防御前哨基地",
+        "roi": [60, 270, 320, 80],
+        "action": "Click",
+        "target": [645, 298],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["前哨_确认回到大厅", "前哨_关闭面板_重试"]
+    },
+    "前哨_关闭面板_重试": {
+        "recognition": "OCR",
+        "expected": "防御前哨基地",
+        "roi": [60, 270, 320, 80],
+        "action": "Click",
+        "target": [645, 298],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["前哨_确认回到大厅"],
+        "on_error": ["前哨_结束"]
+    },
+    "前哨_确认回到大厅": {
+        "recognition": "OCR",
+        "expected": "作战出击",
+        "roi": [500, 1230, 200, 90],
+        "action": "DoNothing",
+        "post_delay": 1500,
+        "timeout": 8000,
+        "next": [],
+        "on_error": ["前哨_结束"]
+    },
+    "前哨_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": []
+    }
+}
