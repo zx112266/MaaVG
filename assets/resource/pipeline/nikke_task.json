@@ -1,0 +1,207 @@
+{
+    "任务_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "任务_判大厅"
+        ]
+    },
+    "任务_判大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "DoNothing",
+        "post_delay": 300,
+        "timeout": 8000,
+        "next": [
+            "任务_点任务"
+        ],
+        "on_error": [
+            "任务_结束"
+        ]
+    },
+    "任务_点任务": {
+        "recognition": "OCR",
+        "expected": "任务",
+        "roi": [
+            625,
+            405,
+            62,
+            42
+        ],
+        "action": "Click",
+        "target": [
+            656,
+            400
+        ],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "任务_判面板"
+        ],
+        "on_error": [
+            "任务_结束"
+        ]
+    },
+    "任务_判面板": {
+        "recognition": "OCR",
+        "expected": "每日任务",
+        "roi": [
+            60,
+            340,
+            120,
+            45
+        ],
+        "action": "DoNothing",
+        "post_delay": 300,
+        "timeout": 8000,
+        "next": [
+            "任务_全领取1"
+        ],
+        "on_error": [
+            "任务_结束"
+        ]
+    },
+    "任务_全领取1": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "roi": [
+            516,
+            1269,
+            117,
+            47
+        ],
+        "action": "Click",
+        "target": [
+            574,
+            1292
+        ],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "任务_浮层1"
+        ],
+        "on_error": [
+            "任务_关闭"
+        ]
+    },
+    "任务_浮层1": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            240,
+            920,
+            240,
+            90
+        ],
+        "action": "Click",
+        "target": [
+            360,
+            962
+        ],
+        "post_delay": 1500,
+        "timeout": 5000,
+        "next": [
+            "任务_全领取2"
+        ],
+        "on_error": [
+            "任务_全领取2"
+        ]
+    },
+    "任务_全领取2": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "roi": [
+            516,
+            1269,
+            117,
+            47
+        ],
+        "action": "Click",
+        "target": [
+            574,
+            1292
+        ],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "任务_浮层2"
+        ],
+        "on_error": [
+            "任务_关闭"
+        ]
+    },
+    "任务_浮层2": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            240,
+            920,
+            240,
+            90
+        ],
+        "action": "Click",
+        "target": [
+            360,
+            962
+        ],
+        "post_delay": 1500,
+        "timeout": 5000,
+        "next": [
+            "任务_关闭"
+        ],
+        "on_error": [
+            "任务_关闭"
+        ]
+    },
+    "任务_关闭": {
+        "recognition": "OCR",
+        "expected": "每日任务",
+        "roi": [
+            60,
+            340,
+            120,
+            45
+        ],
+        "action": "Click",
+        "target": [
+            659,
+            228
+        ],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "任务_确认大厅"
+        ],
+        "on_error": [
+            "任务_结束"
+        ]
+    },
+    "任务_确认大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 12000,
+        "next": [],
+        "on_error": [
+            "任务_结束"
+        ]
+    },
+    "任务_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
