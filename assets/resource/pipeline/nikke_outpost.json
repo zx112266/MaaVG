@@ -57,9 +57,32 @@
         "expected": "进行歼灭",
         "roi": [380, 1080, 180, 70],
         "action": "Click",
+        "target_offset": [0, 14],
         "post_delay": 2500,
         "timeout": 8000,
-        "next": ["前哨_领取奖励_歼灭"]
+        "next": ["前哨_进行歼灭_校验"],
+        "on_error": ["前哨_检测获得奖励", "前哨_关闭面板"]
+    },
+    "前哨_进行歼灭_校验": {
+        "recognition": "OCR",
+        "expected": "进行歼灭",
+        "roi": [380, 1080, 180, 70],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 2500,
+        "next": ["前哨_进行歼灭_重试"],
+        "on_error": ["前哨_领取奖励_歼灭"]
+    },
+    "前哨_进行歼灭_重试": {
+        "recognition": "OCR",
+        "expected": "进行歼灭",
+        "roi": [380, 1080, 180, 70],
+        "action": "Click",
+        "target_offset": [0, 20],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": ["前哨_领取奖励_歼灭"],
+        "on_error": ["前哨_检测获得奖励", "前哨_关闭面板"]
     },
     "前哨_领取奖励_歼灭": {
         "recognition": "OCR",

@@ -1,0 +1,115 @@
+{
+    "模拟室_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 8000,
+        "next": ["模拟室_判据_大厅"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_判据_大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "Click",
+        "target": [610, 1155],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["模拟室_判据_方舟内"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_判据_方舟内": {
+        "recognition": "OCR",
+        "expected": "模拟室",
+        "roi": [95, 940, 110, 55],
+        "action": "DoNothing",
+        "post_delay": 600,
+        "timeout": 8000,
+        "next": ["模拟室_点击模拟室"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_点击模拟室": {
+        "recognition": "OCR",
+        "expected": "模拟室",
+        "roi": [95, 940, 110, 55],
+        "action": "Click",
+        "target": [143, 880],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": ["模拟室_识开始模拟"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_识开始模拟": {
+        "recognition": "OCR",
+        "expected": "开始模拟",
+        "roi": [295, 910, 130, 60],
+        "action": "Click",
+        "target": [358, 952],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["模拟室_识快速模拟"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_识快速模拟": {
+        "recognition": "OCR",
+        "expected": "快速模拟",
+        "roi": [470, 1200, 170, 60],
+        "action": "DoNothing",
+        "post_delay": 600,
+        "timeout": 6000,
+        "next": ["模拟室_判按钮颜色_快速模拟"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_判按钮颜色_快速模拟": {
+        "recognition": "ColorMatch",
+        "roi": [445, 1195, 200, 70],
+        "method": 4,
+        "lower": [[195, 115, 45]],
+        "upper": [[255, 170, 110]],
+        "count": 2500,
+        "connected": false,
+        "action": "Click",
+        "target": [551, 1246],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": ["模拟室_识模拟结束", "模拟室_回主页"],
+        "on_error": ["模拟室_回主页"]
+    },
+    "模拟室_识模拟结束": {
+        "recognition": "OCR",
+        "expected": "模拟结束",
+        "roi": [315, 1030, 135, 60],
+        "action": "Click",
+        "target": [381, 1064],
+        "post_delay": 2000,
+        "timeout": 8000,
+        "next": ["模拟室_回主页"],
+        "on_error": ["模拟室_回主页"]
+    },
+    "模拟室_回主页": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [60, 1455, 150, 70],
+        "action": "Click",
+        "target": [195, 1492],
+        "post_delay": 8000,
+        "timeout": 8000,
+        "next": ["模拟室_确认大厅"],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_确认大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "DoNothing",
+        "post_delay": 800,
+        "timeout": 12000,
+        "next": [],
+        "on_error": ["模拟室_结束"]
+    },
+    "模拟室_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": []
+    }
+}
