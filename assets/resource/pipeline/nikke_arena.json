@@ -1,0 +1,194 @@
+{
+    "竞技场_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["竞技场_判大厅"]
+    },
+    "竞技场_判大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "Click",
+        "target": [610, 1155],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["竞技场_判方舟内"],
+        "on_error": ["竞技场_结束"]
+    },
+    "竞技场_判方舟内": {
+        "recognition": "OCR",
+        "expected": "竞技场",
+        "roi": [480, 1090, 110, 45],
+        "action": "Click",
+        "target": [540, 937],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": ["竞技场_点特殊卡片", "竞技场_点新人"],
+        "on_error": ["竞技场_结束"]
+    },
+    "竞技场_点特殊卡片": {
+        "recognition": "OCR",
+        "expected": "特殊竞技场",
+        "roi": [380, 870, 125, 45],
+        "action": "Click",
+        "target": [500, 900],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": ["特殊_判页面"],
+        "on_error": ["竞技场_点新人"]
+    },
+    "特殊_判页面": {
+        "recognition": "OCR",
+        "expected": "特殊竞技场",
+        "roi": [296, 254, 126, 44],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": ["特殊_点猫头"],
+        "on_error": ["竞技场_点新人"]
+    },
+    "特殊_点猫头": {
+        "recognition": "OCR",
+        "expected": "特殊竞技场",
+        "roi": [296, 254, 126, 44],
+        "action": "Click",
+        "target": [360, 385],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["特殊_判领取"],
+        "on_error": ["竞技场_点新人"]
+    },
+    "特殊_判领取": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi": [462, 1262, 84, 52],
+        "action": "Click",
+        "target": [503, 1290],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["特殊_点奖励"],
+        "on_error": ["特殊_返回列表"]
+    },
+    "特殊_点奖励": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [230, 920, 260, 70],
+        "action": "Click",
+        "target": [360, 962],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["特殊_返回列表"],
+        "on_error": ["特殊_返回列表"]
+    },
+    "特殊_返回列表": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [60, 1455, 140, 70],
+        "action": "Click",
+        "target": [101, 1490],
+        "post_delay": 3000,
+        "timeout": 10000,
+        "next": ["竞技场_点新人"],
+        "on_error": ["竞技场_点新人"]
+    },
+    "竞技场_点新人": {
+        "recognition": "OCR",
+        "expected": "新人竞技场",
+        "roi": [55, 866, 120, 45],
+        "action": "Click",
+        "target": [170, 870],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": ["竞技场_识免费"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_识免费": {
+        "recognition": "OCR",
+        "expected": "免费",
+        "roi": [555, 755, 90, 480],
+        "action": "DoNothing",
+        "post_delay": 400,
+        "timeout": 6000,
+        "next": ["竞技场_点进入战斗"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_点进入战斗": {
+        "recognition": "OCR",
+        "expected": "进入战斗",
+        "roi": [530, 770, 130, 470],
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": ["竞技场_确认进入"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_确认进入": {
+        "recognition": "OCR",
+        "expected": "进入战斗",
+        "roi": [408, 1160, 163, 61],
+        "action": "Click",
+        "target": [489, 1190],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": ["竞技场_等结果"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_等结果": {
+        "recognition": "OCR",
+        "expected": ["DEFEAT", "VICTORY"],
+        "roi": [115, 255, 486, 203],
+        "action": "DoNothing",
+        "post_delay": 800,
+        "timeout": 120000,
+        "next": ["竞技场_下一步"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_下一步": {
+        "recognition": "OCR",
+        "expected": "点击进行下一步",
+        "roi": [260, 1215, 210, 70],
+        "action": "Click",
+        "target": [357, 1252],
+        "post_delay": 4000,
+        "timeout": 10000,
+        "next": ["竞技场_回列表"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_回列表": {
+        "recognition": "OCR",
+        "expected": "免费",
+        "roi": [555, 755, 90, 480],
+        "action": "DoNothing",
+        "post_delay": 1500,
+        "timeout": 20000,
+        "max_hit": 8,
+        "next": ["竞技场_点进入战斗"],
+        "on_error": ["竞技场_回主页"]
+    },
+    "竞技场_回主页": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [60, 1450, 140, 75],
+        "action": "Click",
+        "target": [195, 1492],
+        "post_delay": 6000,
+        "timeout": 10000,
+        "next": ["竞技场_确认大厅"],
+        "on_error": ["竞技场_结束"]
+    },
+    "竞技场_确认大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 15000,
+        "next": [],
+        "on_error": ["竞技场_结束"]
+    },
+    "竞技场_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
