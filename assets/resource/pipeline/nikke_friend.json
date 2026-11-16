@@ -1,0 +1,86 @@
+{
+    "好友_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["好友_判大厅"]
+    },
+    "好友_判大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": ["好友_点好友"],
+        "on_error": ["好友_结束"]
+    },
+    "好友_点好友": {
+        "recognition": "OCR",
+        "expected": "好友",
+        "roi": [628, 510, 58, 40],
+        "action": "Click",
+        "target": [656, 505],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": ["好友_判面板"],
+        "on_error": ["好友_结束"]
+    },
+    "好友_判面板": {
+        "recognition": "OCR",
+        "expected": "好友目录",
+        "roi": [85, 365, 150, 45],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": ["好友_判赠送"],
+        "on_error": ["好友_关闭"]
+    },
+    "好友_判赠送": {
+        "recognition": "ColorMatch",
+        "roi": [460, 1200, 240, 66],
+        "method": 4,
+        "lower": [[20, 120, 190]],
+        "upper": [[130, 205, 255]],
+        "count": 2000,
+        "connected": false,
+        "action": "Click",
+        "target": [561, 1236],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["好友_判确认"],
+        "on_error": ["好友_关闭"]
+    },
+    "好友_判确认": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "roi": [336, 915, 84, 52],
+        "action": "Click",
+        "target": [378, 942],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["好友_关闭"],
+        "on_error": ["好友_关闭"]
+    },
+    "好友_关闭": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [640, 301],
+        "post_delay": 2000,
+        "next": ["好友_确认大厅"]
+    },
+    "好友_确认大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [500, 1080, 220, 120],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 12000,
+        "next": [],
+        "on_error": ["好友_结束"]
+    },
+    "好友_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
