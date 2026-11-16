@@ -1,0 +1,267 @@
+{
+    "拦截战_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "拦截战_判大厅"
+        ]
+    },
+    "拦截战_判大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            610,
+            1155
+        ],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "拦截战_判_方舟内"
+        ],
+        "on_error": [
+            "拦截战_结束"
+        ]
+    },
+    "拦截战_判_方舟内": {
+        "recognition": "OCR",
+        "expected": "拦截战",
+        "roi": [
+            235,
+            1292,
+            90,
+            44
+        ],
+        "action": "Click",
+        "target": [
+            225,
+            1180
+        ],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": [
+            "拦截战_判次数"
+        ],
+        "on_error": [
+            "拦截战_结束"
+        ]
+    },
+    "拦截战_判次数": {
+        "recognition": "OCR",
+        "expected": [
+            "0/3"
+        ],
+        "roi": [
+            20,
+            175,
+            290,
+            80
+        ],
+        "action": "DoNothing",
+        "post_delay": 300,
+        "timeout": 6000,
+        "next": [
+            "拦截战_回主页"
+        ],
+        "on_error": [
+            "拦截战_点挑战"
+        ]
+    },
+    "拦截战_点挑战": {
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            250,
+            1180,
+            220,
+            90
+        ],
+        "action": "Click",
+        "target": [
+            361,
+            1245
+        ],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": [
+            "拦截战_识快速战斗"
+        ],
+        "on_error": [
+            "拦截战_回主页"
+        ]
+    },
+    "拦截战_识快速战斗": {
+        "recognition": "OCR",
+        "expected": "每周快速战斗",
+        "roi": [
+            443,
+            1353,
+            178,
+            27
+        ],
+        "action": "DoNothing",
+        "post_delay": 300,
+        "timeout": 6000,
+        "next": [
+            "拦截战_判快速可用"
+        ],
+        "on_error": [
+            "拦截战_回主页"
+        ]
+    },
+    "拦截战_判快速可用": {
+        "recognition": "ColorMatch",
+        "roi": [
+            390,
+            1345,
+            290,
+            60
+        ],
+        "method": 4,
+        "lower": [
+            [
+                170,
+                85,
+                45
+            ]
+        ],
+        "upper": [
+            [
+                255,
+                175,
+                135
+            ]
+        ],
+        "count": 3000,
+        "connected": false,
+        "action": "Click",
+        "target": [
+            532,
+            1366
+        ],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "拦截战_等结算"
+        ],
+        "on_error": [
+            "拦截战_点进入战斗"
+        ]
+    },
+    "拦截战_点进入战斗": {
+        "recognition": "OCR",
+        "expected": "进入战斗",
+        "roi": [
+            455,
+            1425,
+            175,
+            60
+        ],
+        "action": "Click",
+        "target": [
+            536,
+            1455
+        ],
+        "post_delay": 3000,
+        "timeout": 8000,
+        "next": [
+            "拦截战_等结算"
+        ],
+        "on_error": [
+            "拦截战_回主页"
+        ]
+    },
+    "拦截战_等结算": {
+        "recognition": "OCR",
+        "expected": "总伤害",
+        "roi": [
+            20,
+            768,
+            110,
+            46
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 240000,
+        "next": [
+            "拦截战_点任意处"
+        ],
+        "on_error": [
+            "拦截战_回主页"
+        ]
+    },
+    "拦截战_点任意处": {
+        "recognition": "OCR",
+        "expected": "点击任意处进行下一步",
+        "roi": [
+            240,
+            1390,
+            240,
+            45
+        ],
+        "action": "Click",
+        "target": [
+            357,
+            1412
+        ],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "拦截战_回主页"
+        ],
+        "on_error": [
+            "拦截战_回主页"
+        ]
+    },
+    "拦截战_回主页": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [
+            60,
+            1455,
+            140,
+            70
+        ],
+        "action": "Click",
+        "target": [
+            195,
+            1492
+        ],
+        "post_delay": 6000,
+        "timeout": 8000,
+        "next": [
+            "拦截战_确认大厅"
+        ],
+        "on_error": [
+            "拦截战_结束"
+        ]
+    },
+    "拦截战_确认大厅": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 15000,
+        "next": [],
+        "on_error": [
+            "拦截战_结束"
+        ]
+    },
+    "拦截战_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    }
+}
