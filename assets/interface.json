@@ -5,8 +5,7 @@
     // 示例：https://github.com/MaaXYZ/MaaFramework/blob/main/sample/interface.json
     "interface_version": 2,
     "name": "MaaVG",
-    "description": "胜利女神：新的希望（NIKKE 国服）日常自动化脚本：启动、商店、前哨、派遣、咨询、好友、任务、模拟室、拦截战、无限之塔、竞技场。",
-    "contact": "https://github.com/zx112266/MaaVG",
+    "description": "胜利女神：新的希望（NIKKE）日常自动化脚本：启动、商店、前哨、派遣、咨询、好友、任务、模拟室、拦截战、无限之塔、竞技场。",
     "license": "MIT",
     "welcome": "首次使用！欢迎使用 MaaVG —— 胜利女神日常脚本。",
     // 填写项目地址和版本号可实现自动更新功能
@@ -25,7 +24,7 @@
     ],
     "resource": [
         {
-            "name": "国服（腾讯）",
+            "name": "妮姬",
             "path": [
                 "./resource"
             ]
