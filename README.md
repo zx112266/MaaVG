@@ -7,7 +7,7 @@
 
 # MaaVG
 
-胜利女神：新的希望（NIKKE 国服）日常自动化脚本
+胜利女神：新的希望（NIKKE）日常自动化脚本
 
 </div>
 
@@ -35,7 +35,7 @@
 
 1. 安装 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 推荐的前端（如 MFAAvalonia）；
 2. 加载本项目目录（`interface.json` 所在目录）；
-3. 控制器选「安卓端」，资源选「国服（腾讯）」；
+3. 控制器选「安卓端」，资源选「妮姬」；
 4. 任务列表按 1 → 13 顺序执行即可。
 
 分辨率基准为 **720×1565**（`display_short_side: 720`），所有识别区与点击点均基于该坐标系。
