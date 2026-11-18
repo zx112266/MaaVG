@@ -33,15 +33,15 @@
         "recognition": "OCR",
         "expected": "无限之塔",
         "roi": [
-            520,
-            725,
-            120,
-            45
+            465,
+            655,
+            125,
+            50
         ],
         "action": "Click",
         "target": [
-            578,
-            600
+            519,
+            590
         ],
         "post_delay": 3000,
         "timeout": 8000,
