@@ -94,18 +94,14 @@
         "recognition": "OCR",
         "expected": "点击领取奖励",
         "roi": [
-            240,
-            920,
-            240,
-            90
+            230,
+            900,
+            260,
+            180
         ],
         "action": "Click",
-        "target": [
-            360,
-            962
-        ],
         "post_delay": 1500,
-        "timeout": 5000,
+        "timeout": 8000,
         "next": [
             "任务_全领取2"
         ],
@@ -140,18 +136,14 @@
         "recognition": "OCR",
         "expected": "点击领取奖励",
         "roi": [
-            240,
-            920,
-            240,
-            90
+            230,
+            900,
+            260,
+            180
         ],
         "action": "Click",
-        "target": [
-            360,
-            962
-        ],
         "post_delay": 1500,
-        "timeout": 5000,
+        "timeout": 8000,
         "next": [
             "任务_关闭"
         ],
