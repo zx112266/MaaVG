@@ -15,7 +15,7 @@
         ],
         "post_delay": 2500,
         "next": [
-            "付费商店_等待加载"
+            "付费商店_判大厅"
         ],
         "on_error": [
             "付费商店_等待加载"
@@ -234,10 +234,93 @@
         ],
         "post_delay": 2000,
         "next": [
-            "跳过弹窗_回到大厅_确认"
+            "付费商店_确认大厅"
         ],
         "on_error": [
-            "跳过弹窗_回到大厅_确认"
+            "付费商店_确认大厅"
+        ]
+    },
+    "付费商店_判大厅": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "付费商店_等待加载"
+        ],
+        "on_error": [
+            "付费商店_回大厅"
+        ]
+    },
+    "付费商店_回大厅": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [
+            60,
+            1455,
+            140,
+            70
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            1490
+        ],
+        "post_delay": 3000,
+        "timeout": 6000,
+        "next": [
+            "付费商店_判大厅_二次"
+        ],
+        "on_error": [
+            "付费商店_停"
+        ]
+    },
+    "付费商店_判大厅_二次": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "付费商店_等待加载"
+        ],
+        "on_error": [
+            "付费商店_停"
+        ]
+    },
+    "付费商店_停": {
+        "recognition": "DirectHit",
+        "action": "StopTask",
+        "next": []
+    },
+    "付费商店_确认大厅": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [],
+        "on_error": [
+            "付费商店_停"
         ]
     }
 }

@@ -4,8 +4,7 @@
         "action": "DoNothing",
         "timeout": 15000,
         "next": [
-            "前哨_关公告弹窗",
-            "前哨_判据_作战出击"
+            "前哨_判大厅"
         ]
     },
     "前哨_关公告弹窗": {
@@ -354,7 +353,9 @@
         "action": "DoNothing",
         "post_delay": 1500,
         "timeout": 8000,
-        "next": [],
+        "next": [
+            "前哨_确认大厅"
+        ],
         "on_error": [
             "前哨_结束"
         ]
@@ -363,6 +364,93 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 3000,
+        "next": [
+            "前哨_确认大厅"
+        ]
+    },
+    "前哨_判大厅": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "前哨_关公告弹窗",
+            "前哨_判据_作战出击"
+        ],
+        "on_error": [
+            "前哨_回大厅"
+        ]
+    },
+    "前哨_回大厅": {
+        "recognition": "OCR",
+        "expected": "返回",
+        "roi": [
+            60,
+            1455,
+            140,
+            70
+        ],
+        "action": "Click",
+        "target": [
+            101,
+            1490
+        ],
+        "post_delay": 3000,
+        "timeout": 6000,
+        "next": [
+            "前哨_判大厅_二次"
+        ],
+        "on_error": [
+            "前哨_停"
+        ]
+    },
+    "前哨_判大厅_二次": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "前哨_关公告弹窗",
+            "前哨_判据_作战出击"
+        ],
+        "on_error": [
+            "前哨_停"
+        ]
+    },
+    "前哨_停": {
+        "recognition": "DirectHit",
+        "action": "StopTask",
         "next": []
+    },
+    "前哨_确认大厅": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [],
+        "on_error": [
+            "前哨_停"
+        ]
     }
 }

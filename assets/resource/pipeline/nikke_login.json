@@ -1,0 +1,172 @@
+{
+    "签到_入口": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "签到_判大厅"
+        ]
+    },
+    "签到_判大厅": {
+        "recognition": "OCR",
+        "expected": "付费商店",
+        "roi": [
+            95,
+            1045,
+            180,
+            60
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "签到_判全部领取"
+        ],
+        "on_error": [
+            "签到_判大厅_方舟"
+        ]
+    },
+    "签到_判全部领取": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "roi": [
+            0,
+            1025,
+            720,
+            420
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 6000,
+        "max_hit": 8,
+        "next": [
+            "签到_点全部领取"
+        ],
+        "on_error": [
+            "签到_判获取"
+        ]
+    },
+    "签到_点全部领取": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "roi": [
+            0,
+            1025,
+            720,
+            420
+        ],
+        "action": "Click",
+        "target": [
+            562,
+            1344
+        ],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "签到_判奖励"
+        ],
+        "on_error": [
+            "签到_判奖励"
+        ]
+    },
+    "签到_判获取": {
+        "recognition": "OCR",
+        "expected": "获取",
+        "roi": [
+            0,
+            1025,
+            720,
+            420
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 6000,
+        "max_hit": 8,
+        "next": [
+            "签到_点获取"
+        ],
+        "on_error": [
+            "签到_结束"
+        ]
+    },
+    "签到_点获取": {
+        "recognition": "OCR",
+        "expected": "获取",
+        "roi": [
+            0,
+            1025,
+            720,
+            420
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "签到_判奖励"
+        ],
+        "on_error": [
+            "签到_判奖励"
+        ]
+    },
+    "签到_点蓝线": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            1413
+        ],
+        "post_delay": 2000,
+        "next": [
+            "签到_判全部领取"
+        ],
+        "on_error": [
+            "签到_结束"
+        ]
+    },
+    "签到_结束": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": []
+    },
+    "签到_判奖励": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            230,
+            900,
+            260,
+            180
+        ],
+        "action": "Click",
+        "target": [
+            360,
+            962
+        ],
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": [
+            "签到_点蓝线"
+        ],
+        "on_error": [
+            "签到_点蓝线"
+        ]
+    },
+    "签到_判大厅_方舟": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "DoNothing",
+        "post_delay": 500,
+        "timeout": 8000,
+        "next": [
+            "签到_判全部领取"
+        ],
+        "on_error": [
+            "签到_结束"
+        ]
+    }
+}

@@ -4,7 +4,7 @@
         "action": "StartApp",
         "package": "com.tencent.nikke",
         "post_delay": 1000,
-        "timeout": 35000,
+        "timeout": 120000,
         "next": [
             "公告弹窗_标题页",
             "公告弹窗",
@@ -16,10 +16,18 @@
     },
     "公告弹窗_标题页": {
         "recognition": "OCR",
-        "roi": [300, 385, 220, 75],
+        "roi": [
+            300,
+            385,
+            220,
+            75
+        ],
         "expected": "公告",
         "action": "Click",
-        "target": [636, 420],
+        "target": [
+            636,
+            420
+        ],
         "post_delay": 1500,
         "timeout": 8000,
         "next": [
@@ -28,8 +36,16 @@
     },
     "公告弹窗": {
         "recognition": "OCR",
-        "roi": [90, 295, 540, 110],
-        "expected": ["活动公告", "系统公告"],
+        "roi": [
+            90,
+            295,
+            540,
+            110
+        ],
+        "expected": [
+            "活动公告",
+            "系统公告"
+        ],
         "action": "ClickKey",
         "key": 4,
         "post_delay": 1500,
@@ -40,7 +56,12 @@
     },
     "等待点击开始": {
         "recognition": "OCR",
-        "roi": [250, 1240, 240, 130],
+        "roi": [
+            250,
+            1240,
+            240,
+            130
+        ],
         "expected": "点击开始",
         "action": "Click",
         "post_delay": 1000,
@@ -53,10 +74,21 @@
     },
     "活动公告弹窗_关闭": {
         "recognition": "OCR",
-        "roi": [40, 300, 640, 100],
-        "expected": ["活动公告", "系统公告"],
+        "roi": [
+            40,
+            300,
+            640,
+            100
+        ],
+        "expected": [
+            "活动公告",
+            "系统公告"
+        ],
         "action": "Click",
-        "target": [655, 276],
+        "target": [
+            655,
+            276
+        ],
         "post_delay": 1500,
         "timeout": 8000,
         "next": [
@@ -65,15 +97,28 @@
     },
     "大厅_底栏确认": {
         "recognition": "OCR",
-        "roi": [430, 1480, 250, 70],
-        "expected": ["物品栏", "队员招募"],
+        "roi": [
+            430,
+            1480,
+            250,
+            70
+        ],
+        "expected": [
+            "物品栏",
+            "队员招募"
+        ],
         "action": "DoNothing",
         "timeout": 10000,
         "next": []
     },
     "大厅_作战出击确认": {
         "recognition": "OCR",
-        "roi": [430, 1190, 290, 140],
+        "roi": [
+            430,
+            1190,
+            290,
+            140
+        ],
         "expected": "作战出击",
         "action": "DoNothing",
         "timeout": 10000,
@@ -94,7 +139,7 @@
         "action": "StartApp",
         "package": "com.tencent.nikke",
         "post_delay": 1000,
-        "timeout": 35000,
+        "timeout": 120000,
         "next": [
             "公告弹窗_标题页",
             "公告弹窗",
@@ -119,7 +164,7 @@
         "action": "StartApp",
         "package": "com.tencent.nikke",
         "post_delay": 1000,
-        "timeout": 35000,
+        "timeout": 120000,
         "next": [
             "公告弹窗_标题页",
             "公告弹窗",
@@ -131,7 +176,7 @@
     },
     "停滞放弃": {
         "recognition": "DirectHit",
-        "action": "DoNothing",
+        "action": "StopTask",
         "next": []
     }
 }
