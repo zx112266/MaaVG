@@ -455,3 +455,6 @@ debug
 # local scratch
 tmp/
 _tmp_*.py
+
+# local scratch
+.tmp-mm/

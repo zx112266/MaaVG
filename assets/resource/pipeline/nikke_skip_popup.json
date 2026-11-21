@@ -2,10 +2,14 @@
     "跳过弹窗_回到大厅_确认": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "timeout": 15000,
+        "timeout": 20000,
+        "max_hit": 12,
         "next": [
             "跳过弹窗_活动公告关闭",
-            "跳过弹窗_大厅确认"
+            "跳过弹窗_H5公告关闭",
+            "跳过弹窗_签到全部领取",
+            "跳过弹窗_物资获取",
+            "跳过弹窗_判大厅"
         ],
         "on_error": [
             "跳过弹窗_未确认"
@@ -20,18 +24,77 @@
         "post_delay": 1200,
         "timeout": 3000,
         "next": [
-            "跳过弹窗_大厅确认"
+            "跳过弹窗_回到大厅_确认"
         ]
     },
-    "跳过弹窗_大厅确认": {
+    "跳过弹窗_H5公告关闭": {
+        "recognition": "OCR",
+        "roi": [200, 400, 360, 50],
+        "expected": "敢问路在何方",
+        "action": "Click",
+        "target": [660, 364],
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "跳过弹窗_回到大厅_确认"
+        ]
+    },
+    "跳过弹窗_签到全部领取": {
+        "recognition": "OCR",
+        "roi": [0, 1025, 720, 420],
+        "expected": "全部领取",
+        "action": "Click",
+        "target": [562, 1344],
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "跳过弹窗_领奖浮层"
+        ]
+    },
+    "跳过弹窗_物资获取": {
+        "recognition": "OCR",
+        "roi": [0, 1025, 720, 420],
+        "expected": "获取",
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "跳过弹窗_领奖浮层"
+        ]
+    },
+    "跳过弹窗_领奖浮层": {
+        "recognition": "OCR",
+        "roi": [230, 900, 260, 180],
+        "expected": "点击领取奖励",
+        "action": "Click",
+        "target": [360, 962],
+        "post_delay": 1200,
+        "timeout": 4000,
+        "next": [
+            "跳过弹窗_蓝线关闭"
+        ],
+        "on_error": [
+            "跳过弹窗_蓝线关闭"
+        ]
+    },
+    "跳过弹窗_蓝线关闭": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [360, 1413],
+        "post_delay": 1500,
+        "next": [
+            "跳过弹窗_回到大厅_确认"
+        ]
+    },
+    "跳过弹窗_判大厅": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "timeout": 6000,
+        "timeout": 5000,
         "next": [
             "跳过弹窗_判据_作战出击"
         ],
         "on_error": [
-            "跳过弹窗_未确认"
+            "跳过弹窗_蓝线关闭"
         ]
     },
     "跳过弹窗_判据_作战出击": {
