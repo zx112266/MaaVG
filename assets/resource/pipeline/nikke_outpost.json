@@ -238,8 +238,8 @@
         ],
         "action": "Click",
         "target": [
-            521,
-            1236
+            503,
+            1232
         ],
         "post_delay": 2500,
         "timeout": 8000,
@@ -265,13 +265,13 @@
             14
         ],
         "post_delay": 2000,
-        "timeout": 10000,
+        "timeout": 15000,
         "next": [
             "前哨_领取奖励_获得_重试",
-            "前哨_关闭面板"
+            "前哨_检测获得奖励_重试1"
         ],
         "on_error": [
-            "前哨_关闭面板"
+            "前哨_检测获得奖励_重试1"
         ]
     },
     "前哨_领取奖励_获得_重试": {
@@ -289,7 +289,122 @@
             14
         ],
         "post_delay": 2000,
-        "timeout": 6000,
+        "timeout": 8000,
+        "next": [
+            "前哨_关闭面板"
+        ],
+        "on_error": [
+            "前哨_检测获得奖励_重试1"
+        ]
+    },
+    "前哨_检测获得奖励_重试1": {
+        "recognition": "OCR",
+        "expected": "获得奖励",
+        "roi": [
+            455,
+            1205,
+            145,
+            60
+        ],
+        "action": "Click",
+        "target": [
+            503,
+            1232
+        ],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "前哨_领取奖励_获得2"
+        ],
+        "on_error": [
+            "前哨_关闭面板"
+        ]
+    },
+    "前哨_领取奖励_获得2": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            200,
+            880,
+            320,
+            400
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            14
+        ],
+        "post_delay": 2000,
+        "timeout": 15000,
+        "next": [
+            "前哨_领取奖励_获得2_重试"
+        ],
+        "on_error": [
+            "前哨_检测获得奖励_重试2"
+        ]
+    },
+    "前哨_领取奖励_获得2_重试": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            200,
+            880,
+            320,
+            400
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            14
+        ],
+        "post_delay": 2000,
+        "timeout": 8000,
+        "next": [
+            "前哨_关闭面板"
+        ],
+        "on_error": [
+            "前哨_检测获得奖励_重试2"
+        ]
+    },
+    "前哨_检测获得奖励_重试2": {
+        "recognition": "OCR",
+        "expected": "获得奖励",
+        "roi": [
+            455,
+            1205,
+            145,
+            60
+        ],
+        "action": "Click",
+        "target": [
+            503,
+            1232
+        ],
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "前哨_领取奖励_获得3"
+        ],
+        "on_error": [
+            "前哨_关闭面板"
+        ]
+    },
+    "前哨_领取奖励_获得3": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "roi": [
+            200,
+            880,
+            320,
+            400
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            14
+        ],
+        "post_delay": 2000,
+        "timeout": 12000,
         "next": [
             "前哨_关闭面板"
         ],
