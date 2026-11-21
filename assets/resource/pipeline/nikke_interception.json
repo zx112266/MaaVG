@@ -16,6 +16,25 @@
             60
         ],
         "action": "DoNothing",
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "拦截战_点方舟"
+        ],
+        "on_error": [
+            "拦截战_回大厅"
+        ]
+    },
+    "拦截战_点方舟": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "Click",
         "target": [
             610,
             1155
@@ -303,10 +322,10 @@
         "post_delay": 500,
         "timeout": 8000,
         "next": [
-            "拦截战_判_方舟内"
+            "拦截战_点方舟"
         ],
         "on_error": [
-            "拦截战_停"
+            "拦截战_回大厅"
         ]
     },
     "拦截战_停": {

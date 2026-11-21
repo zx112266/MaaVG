@@ -16,6 +16,25 @@
             60
         ],
         "action": "DoNothing",
+        "post_delay": 2500,
+        "timeout": 8000,
+        "next": [
+            "塔_点方舟"
+        ],
+        "on_error": [
+            "塔_回大厅"
+        ]
+    },
+    "塔_点方舟": {
+        "recognition": "OCR",
+        "expected": "方舟",
+        "roi": [
+            500,
+            1080,
+            220,
+            120
+        ],
+        "action": "Click",
         "target": [
             610,
             1155
@@ -315,10 +334,10 @@
         "post_delay": 500,
         "timeout": 8000,
         "next": [
-            "塔_判方舟内"
+            "塔_点方舟"
         ],
         "on_error": [
-            "塔_停"
+            "塔_回大厅"
         ]
     },
     "塔_停": {
